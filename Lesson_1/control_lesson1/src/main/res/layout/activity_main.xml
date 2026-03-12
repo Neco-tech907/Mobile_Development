@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Аватар тимлида"
+            android:src="@drawable/ic_launcher_foreground"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Раул Иванов"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/textViewPosition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Analyst SOC (уже 5 месяцев)"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="☎️ 8 800 555 35 35"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✉️ r.ivanov@mirea.ru"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:textColor="@android:color/white"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="8dp"
+            android:text="Сейчас чилит"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/editTextNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Напишите, что сломалось на проде..."
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/white"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/buttonCall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🤙 Позвонить"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/buttonFire"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🔥 Уволить"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_alert"
+            android:contentDescription="Тревога"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FF4444"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
