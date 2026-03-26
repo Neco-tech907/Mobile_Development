@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 **Демонстрация работы (LogCat):**
-![](images/Pasted image 20260330221521.png)
+![](images/Pasted%20image%2020260330221521.png)
 
 ### 3.2. Явные намерения и передача данных (модуль `MultiActivity`)
 
@@ -337,15 +337,15 @@ public class SecondActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 
-![](images/Pasted image 20260403174352.png)
+![](images/Pasted%20image%2020260403174352.png)
 
-![](images/Pasted image 20260403174430.png)
+![](images/Pasted%20image%2020260403174430.png)
 
-![](images/Pasted image 20260403174848.png)
+![](images/Pasted%20image%2020260403174848.png)
 
-![](images/Pasted image 20260403174908.png)
+![](images/Pasted%20image%2020260403174908.png)
 
-![](images/Pasted image 20260403174923.png)
+![](images/Pasted%20image%2020260403174923.png)
 
 ### 3.3. Неявные намерения (модуль `IntentFilter`)
 
@@ -399,11 +399,11 @@ public class MainActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 
-![](images/Pasted image 20260403175953.png)
+![](images/Pasted%20image%2020260403175953.png)
 
-![](images/Pasted image 20260403180020.png)
+![](images/Pasted%20image%2020260403180020.png)
 
-![](images/Pasted image 20260403180143.png)
+![](images/Pasted%20image%2020260403180143.png)
 
 ### 3.4. Всплывающие уведомления (модуль `ToastApp`)
 
@@ -451,9 +451,9 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 **Демонстрация работы:**
-![](images/Pasted image 20260403180548.png)
+![](images/Pasted%20image%2020260403180548.png)
 
-![](images/Pasted image 20260403180557.png)
+![](images/Pasted%20image%2020260403180557.png)
 
 ### 3.5. Системные уведомления (модуль `NotificationApp`)
 
@@ -549,9 +549,9 @@ public class MainActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 
-![](images/Pasted image 20260403181447.png)
+![](images/Pasted%20image%2020260403181447.png)
 
-![](images/Pasted image 20260403181444.png)
+![](images/Pasted%20image%2020260403181444.png)
 
 ### 3.6. Диалоговые окна и фрагменты (модуль `Dialog`)
 
@@ -728,15 +728,15 @@ public class MainActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 
-![](images/Pasted image 20260403182750.png)
+![](images/Pasted%20image%2020260403182750.png)
 
-![](images/Pasted image 20260403182740.png)
+![](images/Pasted%20image%2020260403182740.png)
 
-![](images/Pasted image 20260403182948.png)
+![](images/Pasted%20image%2020260403182948.png)
 
-![](images/Pasted image 20260403182922.png)
+![](images/Pasted%20image%2020260403182922.png)
 
-![](images/Pasted image 20260403183004.png)
+![](images/Pasted%20image%2020260403183004.png)
 
 ---
 
@@ -744,10 +744,9 @@ public class MainActivity extends AppCompatActivity {
 
 По завершении второй практической работы были достигнуты следующие результаты:
 
-- Детально изучен жизненный цикл Android-приложений, что позволяет корректно управлять ресурсами и сохранять пользовательские данные при сворачивании или повороте экрана.
-- Освоены механизмы навигации и передачи данных между активностями.
-- Получен навык интеграции приложения в экосистему ОС Android посредством использования системных фильтров (Implicit Intents) для открытия ссылок и шеринга информации.
-- Изучены и применены на практике три основных вида информирования пользователя: Toasts, системные Notifications с поддержкой современных API и модальные окна Dialogs на базе архитектуры фрагментов.
-- Все разработанные модули успешно отлажены и протестированы на эмуляторе.
-
+- Подробно изучен жизненный цикл Android-приложений, что обеспечивает корректное управление ресурсами и сохранение пользовательских данных при сворачивании приложения или повороте экрана.
+- Освоены методы навигации между активностями и передачи данных между ними.
+- Приобретён опыт интеграции приложения в экосистему ОС Android с использованием системных фильтров (Implicit Intents) для открытия веб-ссылок и обмена информацией с другими приложениями.
+- Изучены и применены на практике три основных способа информирования пользователя: всплывающие сообщения (Toasts), системные уведомления (Notifications) с поддержкой современных API и модальные окна (Dialogs) на базе архитектуры фрагментов.
+- Все разработанные модули были успешно отлажены и протестированы на эмуляторе.
 
