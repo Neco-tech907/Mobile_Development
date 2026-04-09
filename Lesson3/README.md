@@ -1016,8 +1016,548 @@ public class MainActivity extends AppCompatActivity {
 
 ---
 
+## 3.6. Контрольное задание: Navigation Drawer, DataFragment и WebView (`MireaProject`)
+
+В качестве контрольного задания был доработан проект `MireaProject`, созданный на основе шаблона `Navigation Drawer Activity`. Основной задачей являлось изменение предметной области экрана с данными, настройка боковой навигационной шторки и реализация простейшего встроенного браузера на базе `WebView`.
+
+В ходе выполнения задания были реализованы следующие изменения:
+
+- изменена предметная область `DataFragment` на тему **«Информационная безопасность в IT»**;
+- обновлены названия пунктов меню в боковой шторке на **«Отрасль»** и **«Браузер»**;
+- настроен навигационный граф `Navigation Component` для перехода между фрагментами;
+- переработан экран `DataFragment` с использованием `NestedScrollView`, `MaterialCardView`, актуальных отступов и цветовой схемы `Material You`;
+- исправлен `WebViewFragment`: добавлены поле ввода адреса, кнопки перехода, страница по умолчанию, обработка ошибок и сохранение состояния.
+
+Таким образом, приложение стало представлять собой простую информационную систему с навигационной шторкой, тематическим экраном отрасли и встроенным мини-браузером.
+
+**Листинг** `AndroidManifest.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MireaProject">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+```
+
+Разрешение `INTERNET` необходимо для корректной работы `WebView`, поскольку встроенный браузер загружает внешние веб-страницы.
+
+**Листинг** `drawer_menu.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_data"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="@string/nav_data" />
+        <item
+            android:id="@+id/nav_web"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/nav_web" />
+    </group>
+
+</menu>
+```
+
+В боковом меню сохранён главный экран, а также настроены два требуемых пункта: `Отрасль` и `Браузер`. Идентификаторы пунктов меню связаны с соответствующими фрагментами через навигационный граф.
+
+**Листинг** `mobile_navigation.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="ru.mirea.ivanovrr.mireaproject.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_data"
+        android:name="ru.mirea.ivanovrr.mireaproject.DataFragment"
+        android:label="@string/nav_data"
+        tools:layout="@layout/fragment_data" />
+
+    <fragment
+        android:id="@+id/nav_web"
+        android:name="ru.mirea.ivanovrr.mireaproject.WebViewFragment"
+        android:label="@string/nav_web"
+        tools:layout="@layout/fragment_web_view" />
+
+</navigation>
+```
+
+Файл `mobile_navigation.xml` представляет собой граф навигации, который определяет список отображаемых фрагментов и стартовый экран приложения.
+
+**Листинг** `MainActivity.java`:
+```java
+package ru.mirea.ivanovrr.mireaproject;
+
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import ru.mirea.ivanovrr.mireaproject.databinding.ActivityMainBinding;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
+    private AppBarConfiguration appBarConfiguration;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+
+        DrawerLayout drawerLayout = binding.drawerLayout;
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        if (navHostFragment == null) {
+            throw new IllegalStateException("NavHostFragment is missing in activity_main.xml");
+        }
+
+        NavController navController = navHostFragment.getNavController();
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home,
+                R.id.nav_data,
+                R.id.nav_web
+        ).setOpenableLayout(drawerLayout).build();
+
+        NavigationUI.setupWithNavController(binding.navView, navController);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (view, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+        if (navHostFragment == null) {
+            return super.onSupportNavigateUp();
+        }
+
+        NavController navController = navHostFragment.getNavController();
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+    }
+}
+```
+
+В `MainActivity` была настроена связка `DrawerLayout`, `NavigationView`, `NavHostFragment` и `NavController`. Для обращения к элементам разметки использован механизм `ViewBinding`, что позволило отказаться от ручного вызова `findViewById()` для большинства компонентов.
+
+**Листинг** `fragment_data.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true"
+    tools:context=".DataFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_title"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/data_intro"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="?attr/colorTertiaryContainer"
+            app:cardCornerRadius="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_block_1_title"
+                    android:textAppearance="?attr/textAppearanceTitleLarge"
+                    android:textColor="?attr/colorOnTertiaryContainer"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/data_block_1_text"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnTertiaryContainer" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+```
+
+Фрагмент `DataFragment` был выполнен в виде прокручиваемого экрана. Для оформления использованы `MaterialCardView`, системные `Material 3`-цвета и типографика. Внутри фрагмента размещена информация об отрасли информационной безопасности в IT: основные направления, ключевые навыки, значимость отрасли и типичные профессиональные роли.
+
+**Листинг** `fragment_web_view.xml`:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".WebViewFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/web_title"
+        android:textAppearance="?attr/textAppearanceHeadlineSmall"
+        android:textColor="?attr/colorOnSurface"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="@string/web_back" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/address_input_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/web_address_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/open_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/web_open" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/web_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/web_loading"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:visibility="gone" />
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
+```
+
+Фрагмент браузера содержит поле ввода адреса, кнопку открытия, кнопку возврата на предыдущую страницу, индикатор загрузки и сам компонент `WebView`.
+
+**Листинг** `WebViewFragment.java`:
+```java
+package ru.mirea.ivanovrr.mireaproject;
+
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import ru.mirea.ivanovrr.mireaproject.databinding.FragmentWebViewBinding;
+
+public class WebViewFragment extends Fragment {
+
+    private static final String WEB_VIEW_STATE_KEY = "web_view_state";
+
+    private FragmentWebViewBinding binding;
+    private Bundle webViewState;
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentWebViewBinding.inflate(inflater, container, false);
+        if (savedInstanceState != null) {
+            webViewState = savedInstanceState.getBundle(WEB_VIEW_STATE_KEY);
+        }
+        setupControls();
+        configureWebView();
+        if (webViewState != null) {
+            binding.webView.restoreState(webViewState);
+            updateNavigationState();
+        } else {
+            openPage(getString(R.string.web_default_url));
+        }
+        return binding.getRoot();
+    }
+
+    private void setupControls() {
+        binding.backButton.setOnClickListener(view -> navigateBack());
+        binding.openButton.setOnClickListener(view -> {
+            String rawUrl = binding.addressEditText.getText() == null
+                    ? ""
+                    : binding.addressEditText.getText().toString().trim();
+            openPage(rawUrl);
+        });
+        binding.addressEditText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            boolean isEnterPressed = keyEvent != null
+                    && keyEvent.getAction() == KeyEvent.ACTION_DOWN
+                    && keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER;
+            if (!isEnterPressed) {
+                return false;
+            }
+            String rawUrl = textView.getText() == null ? "" : textView.getText().toString().trim();
+            openPage(rawUrl);
+            return true;
+        });
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private void configureWebView() {
+        WebSettings settings = binding.webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+        settings.setBuiltInZoomControls(true);
+        settings.setDisplayZoomControls(false);
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
+
+        binding.webView.setWebChromeClient(new WebChromeClient());
+        binding.webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return false;
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                setLoadingState(true);
+                binding.addressEditText.setText(url);
+                updateNavigationState();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                setLoadingState(false);
+                binding.addressEditText.setText(url);
+                updateNavigationState();
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                super.onReceivedError(view, request, error);
+                if (request.isForMainFrame()) {
+                    setLoadingState(false);
+                    binding.addressInputLayout.setError(getString(R.string.web_error_loading));
+                }
+            }
+        });
+    }
+
+    private void openPage(String rawUrl) {
+        String normalizedUrl = normalizeUrl(rawUrl);
+        if (normalizedUrl == null) {
+            binding.addressInputLayout.setError(getString(R.string.web_error_invalid_url));
+            return;
+        }
+        binding.addressInputLayout.setError(null);
+        binding.webView.loadUrl(normalizedUrl);
+        binding.addressEditText.setText(normalizedUrl);
+    }
+
+    private String normalizeUrl(String rawUrl) {
+        if (TextUtils.isEmpty(rawUrl)) {
+            return getString(R.string.web_default_url);
+        }
+        if (rawUrl.contains(" ")) {
+            return null;
+        }
+        if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
+            return rawUrl;
+        }
+        return "https://" + rawUrl;
+    }
+
+    private void setLoadingState(boolean isLoading) {
+        binding.webProgress.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        binding.statusText.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+    }
+
+    private void navigateBack() {
+        if (binding != null && binding.webView.canGoBack()) {
+            binding.webView.goBack();
+            updateNavigationState();
+        }
+    }
+
+    private void updateNavigationState() {
+        binding.backButton.setEnabled(binding.webView.canGoBack());
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (binding != null) {
+            Bundle state = new Bundle();
+            binding.webView.saveState(state);
+            outState.putBundle(WEB_VIEW_STATE_KEY, state);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (binding != null) {
+            binding.webView.stopLoading();
+            binding.webView.destroy();
+            binding = null;
+        }
+        super.onDestroyView();
+    }
+}
+```
+
+В отличие от упрощённого варианта браузера, в итоговой реализации были добавлены:
+
+- страница по умолчанию `https://www.mirea.ru/`;
+- автоматическая нормализация введённого адреса;
+- поддержка кнопки возврата по истории посещений;
+- индикатор загрузки страницы;
+- обработка ошибок открытия сайта;
+- сохранение состояния `WebView` при пересоздании фрагмента.
+
+Это позволило сделать `WebViewFragment` более корректным и соответствующим формулировке контрольного задания.
+
+**Демонстрация работы:**
+
+> *Рисунок 15: Главный экран приложения `MireaProject` с Navigation Drawer*
+<img width="334" height="752" alt="image" src="https://github.com/user-attachments/assets/a16b4919-d63e-4af6-aa2f-451146cc3033" />
+
+> *Рисунок 16: Экран `Отрасль` с информацией об информационной безопасности в IT*  
+<img width="341" height="737" alt="image" src="https://github.com/user-attachments/assets/908e1059-5e0e-4d52-9dd7-9df603eb8750" />
+<img width="333" height="737" alt="image" src="https://github.com/user-attachments/assets/1880b717-f2d3-4047-8f90-214a7c336cc3" />
+
+> *Рисунок 17: Экран `Браузер` с загруженной страницей по умолчанию*  
+<img width="336" height="739" alt="image" src="https://github.com/user-attachments/assets/bb3688a2-366c-4813-97f6-01bdeab26283" />
+
+> *Рисунок 18: Работа встроенного браузера при вводе собственного адреса сайта*
+<img width="343" height="738" alt="image" src="https://github.com/user-attachments/assets/ae78f15d-c640-4355-8245-2d850c9fd806" />
+
+
 ## 4. Вывод
 
-В ходе выполнения практической работы были освоены основные механизмы взаимодействия компонентов Android-приложения. На практике были реализованы передача данных между активностями, возврат результата из дочернего экрана, вызов системных приложений через неявные намерения, а также динамическая работа с фрагментами.
-
-Практическая работа позволила закрепить навыки разработки Android-приложений на языке Java и получить практический опыт применения `Intent`, `Activity Result API`, `FragmentManager` и XML-разметки интерфейсов.
+В ходе работы были изучены основные механизмы взаимодействия компонентов Android-приложения. Освоены навыки работы с Intent (как явными, так и неявными), что позволяет создавать связанные многоэкранные приложения. Успешно внедрена технология Activity Result API для обмена данными между экранами. Реализован механизм навигации с использованием фрагментов, включая создание адаптивных интерфейсов (Landscape/Portrait) и работу с боковым навигационным меню, что является стандартом при разработке современных мобильных приложений.
