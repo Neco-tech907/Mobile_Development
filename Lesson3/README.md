@@ -225,10 +225,10 @@ public class SecondActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 > *Рисунок 1: Главный экран модуля IntentApp*  
-![Скриншот](image_1.png)
+<img width="378" height="847" alt="image" src="https://github.com/user-attachments/assets/d59ad075-b6b5-4549-a0ac-ef0faa5bfcda" />
 
 > *Рисунок 2: Экран SecondActivity с отображением переданного времени*  
-![Скриншот](image_2.png)
+<img width="380" height="844" alt="image" src="https://github.com/user-attachments/assets/952c4a0d-4147-4809-9090-b173a9a1cfa3" />
 
 ### 3.2. Обмен данными через системное окно выбора (`sharer`)
 
@@ -339,10 +339,10 @@ public class MainActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 > *Рисунок 3: Главный экран модуля Sharer*  
-![Скриншот](image_3.png)
+<img width="375" height="847" alt="image" src="https://github.com/user-attachments/assets/6e4f1601-3ef3-4eba-a327-bb6b4deac374" />
 
 > *Рисунок 4: Системное окно выбора приложения для отправки текста*  
-![Скриншот](image_4.png)
+<img width="375" height="842" alt="image" src="https://github.com/user-attachments/assets/285bc2d6-955a-4e31-af23-6b0d2149ed91" />
 
 ### 3.3. Возврат результата из активности (`favoritebook`)
 
@@ -589,13 +589,13 @@ public class ShareActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 > *Рисунок 5: Главный экран модуля FavoriteBook до ввода данных*  
-![Скриншот](image_5.png)
+<img width="375" height="841" alt="image" src="https://github.com/user-attachments/assets/c3f1ce02-9b54-4fe5-80be-5069421c043b" />
 
 > *Рисунок 6: Экран ShareActivity с вводом названия книги*  
-![Скриншот](image_6.png)
+<img width="376" height="846" alt="image" src="https://github.com/user-attachments/assets/45f15bd9-fd32-4ecd-94d1-46036a9a7c27" />
 
 > *Рисунок 7: Главный экран после возврата результата*  
-![Скриншот](image_7.png)
+<img width="377" height="845" alt="image" src="https://github.com/user-attachments/assets/15376026-327c-42e2-9a02-6ddffa5bd772" />
 
 ### 3.4. Вызов системных приложений (`systemintentsapp`)
 
@@ -720,16 +720,16 @@ public class MainActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 > *Рисунок 8: Главный экран модуля SystemIntentsApp*  
-![Скриншот](image_8.png)
+<img width="378" height="844" alt="image" src="https://github.com/user-attachments/assets/693dfecf-4c88-43b0-8343-b5e773555b5e" />
 
-> *Рисунок 9: Открытие номеронабирателя*  
-![Скриншот](image_9.png)
+> *Рисунок 9: Открытие телефона*  
+<img width="377" height="839" alt="image" src="https://github.com/user-attachments/assets/113fa2c6-c95a-424c-a1c3-cde978b87998" />
 
 > *Рисунок 10: Открытие страницы в браузере*  
-![Скриншот](image_10.png)
+<img width="376" height="846" alt="image" src="https://github.com/user-attachments/assets/a91aa356-7423-4871-a644-9b7687cd65d7" />
 
 > *Рисунок 11: Открытие карты по координатам*  
-![Скриншот](image_11.png)
+<img width="375" height="843" alt="image" src="https://github.com/user-attachments/assets/d229264b-bb44-41ab-a0d2-09aee5ca6e53" />
 
 ### 3.5. Работа с фрагментами (`simplefragmentapp`)
 
@@ -1006,13 +1006,13 @@ public class MainActivity extends AppCompatActivity {
 
 **Демонстрация работы:**
 > *Рисунок 12: Приложение в портретной ориентации с первым фрагментом*  
-![Скриншот](image_12.png)
+<img width="378" height="841" alt="image" src="https://github.com/user-attachments/assets/dece0b09-a698-474c-8cf0-c070c9977fe3" />
 
 > *Рисунок 13: Приложение в портретной ориентации со вторым фрагментом*  
-![Скриншот](image_13.png)
+<img width="377" height="846" alt="image" src="https://github.com/user-attachments/assets/6909a5d6-f4f5-4dfe-99e0-71934316b051" />
 
 > *Рисунок 14: Приложение в горизонтальной ориентации с двумя фрагментами*  
-![Скриншот](image_14.png)
+<img width="636" height="284" alt="image" src="https://github.com/user-attachments/assets/3dcbaeda-abd0-4e3a-98ea-177464bd6b7a" />
 
 ---
 
