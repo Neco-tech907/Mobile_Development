@@ -1546,6 +1546,7 @@ public class WebViewFragment extends Fragment {
 
 > *Рисунок 15: Главный экран приложения `MireaProject` с Navigation Drawer*
 <img width="334" height="752" alt="image" src="https://github.com/user-attachments/assets/a16b4919-d63e-4af6-aa2f-451146cc3033" />
+<img width="343" height="741" alt="image" src="https://github.com/user-attachments/assets/03a705c6-e3b6-477a-ae4e-ebcd07f780ac" />
 
 > *Рисунок 16: Экран `Отрасль` с информацией об информационной безопасности в IT*  
 <img width="341" height="737" alt="image" src="https://github.com/user-attachments/assets/908e1059-5e0e-4d52-9dd7-9df603eb8750" />
