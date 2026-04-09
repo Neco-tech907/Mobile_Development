@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">IntentApp</string>
+    <string name="main_screen_title">Нажмите кнопку, чтобы передать текущее время во вторую Activity</string>
+    <string name="open_second_activity">Открыть SecondActivity</string>
+    <string name="result_message">КВАДРАТ ЗНАЧЕНИЯ МОЕГО НОМЕРА ПО СПИСКУ В ГРУППЕ СОСТАВЛЯЕТ ЧИСЛО %1$d, а текущее время %2$s</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SystemIntentsApp</string>
+    <string name="title_text">Выберите системное действие</string>
+    <string name="button_call">Позвонить</string>
+    <string name="button_browser">Открыть браузер</string>
+    <string name="button_maps">Открыть карту</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SimpleFragmentApp</string>
+    <string name="first_fragment_button">fragment1</string>
+    <string name="second_fragment_button">fragment2</string>
+    <string name="first_fragment_title">First Fragment</string>
+    <string name="first_fragment_description">Это первый фрагмент, который загружается по умолчанию в вертикальной ориентации.</string>
+    <string name="second_fragment_title">Second Fragment</string>
+    <string name="second_fragment_description">Это второй фрагмент, который открывается по кнопке или отображается рядом в горизонтальной ориентации.</string>
+</resources>

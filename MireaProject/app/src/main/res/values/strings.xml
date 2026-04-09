@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MireaProject</string>
+    <string name="menu_open">Открыть меню</string>
+    <string name="menu_close">Закрыть меню</string>
+    <string name="nav_home">Главная</string>
+    <string name="nav_data">Отрасль</string>
+    <string name="nav_web">Браузер</string>
+
+    <string name="home_title">Контрольное задание №3</string>
+    <string name="home_subtitle">Навигация по приложению</string>
+    <string name="home_description">Приложение демонстрирует Navigation Drawer, экран с информацией об отрасли информационной безопасности в IT и встроенный браузер на основе WebView.</string>
+    <string name="home_hint">Откройте боковую шторку через кнопку в левом верхнем углу и перейдите к экрану отрасли или встроенному браузеру.</string>
+
+    <string name="data_title">Информационная безопасность в IT</string>
+    <string name="data_intro">Информационная безопасность в IT защищает инфраструктуру, сервисы и данные от атак, утечек и отказов. Эта отрасль объединяет технические, организационные и правовые меры для устойчивой работы цифровых продуктов.</string>
+    <string name="data_block_1_title">Основные направления</string>
+    <string name="data_block_1_text">Специалисты работают с сетевой защитой, безопасной разработкой, мониторингом событий, управлением доступом, криптографией, защитой облачных сервисов и реагированием на инциденты.</string>
+    <string name="data_block_2_title">Ключевые навыки</string>
+    <string name="data_block_2_text">Нужны знания сетей и ОС, понимание уязвимостей OWASP, работа с SIEM и журналами, навыки анализа трафика, основы пентестов, скрипты на Python или Bash и умение выстраивать защитные процессы.</string>
+    <string name="data_block_3_title">Почему отрасль важна</string>
+    <string name="data_block_3_text">Кибератаки напрямую влияют на бизнес, государственные сервисы и персональные данные. Грамотная защита снижает финансовые потери, поддерживает доверие пользователей и помогает соблюдать требования законодательства.</string>
+    <string name="data_block_4_title">Типичные роли</string>
+    <string name="data_block_4_text">В отрасли востребованы аналитик SOC, инженер по ИБ, AppSec-специалист, пентестер, DevSecOps-инженер, специалист по управлению рисками и архитектор безопасности.</string>
+
+    <string name="web_title">Простейший браузер</string>
+    <string name="web_address_hint">Введите адрес сайта</string>
+    <string name="web_open">Открыть</string>
+    <string name="web_default_url">https://www.mirea.ru/</string>
+    <string name="web_loading">Загрузка страницы…</string>
+    <string name="web_error_invalid_url">Введите корректный адрес сайта</string>
+    <string name="web_error_loading">Не удалось открыть страницу</string>
+    <string name="web_back">Назад</string>
+</resources>

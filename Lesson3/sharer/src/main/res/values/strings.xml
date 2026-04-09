@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sharer</string>
+    <string name="sharer_title">Введите текст для отправки в другое приложение</string>
+    <string name="message_hint">Введите сообщение</string>
+    <string name="share_button_text">Отправить</string>
+    <string name="chooser_title">Выберите приложение для отправки</string>
+    <string name="empty_message_error">Введите текст сообщения</string>
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FavoriteBook</string>
+    <string name="default_book_text">Тут появится название вашей любимой книги!</string>
+    <string name="user_book_message">Название Вашей любимой книги: %1$s</string>
+    <string name="open_share_screen">Открыть экран ввода данных</string>
+    <string name="developer_book">Маленький принц</string>
+    <string name="developer_book_message">Любимая книга разработчика - %1$s</string>
+    <string name="user_book_hint">Введите название и Вашей любимой книги</string>
+    <string name="send_book_button">Отправить</string>
+    <string name="empty_book_error">Введите название книги</string>
+</resources>
