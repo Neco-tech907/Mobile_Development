@@ -5,11 +5,12 @@
     <string name="nav_home">Главная</string>
     <string name="nav_data">Отрасль</string>
     <string name="nav_web">Браузер</string>
+    <string name="nav_worker">Worker</string>
 
     <string name="home_title">Контрольное задание №3</string>
     <string name="home_subtitle">Навигация по приложению</string>
-    <string name="home_description">Приложение демонстрирует Navigation Drawer, экран с информацией об отрасли информационной безопасности в IT и встроенный браузер на основе WebView.</string>
-    <string name="home_hint">Откройте боковую шторку через кнопку в левом верхнем углу и перейдите к экрану отрасли или встроенному браузеру.</string>
+    <string name="home_description">Приложение демонстрирует Navigation Drawer, экран с информацией об отрасли информационной безопасности в IT, встроенный браузер на основе WebView и запуск фоновой задачи через WorkManager.</string>
+    <string name="home_hint">Откройте боковую шторку через кнопку в левом верхнем углу и перейдите к экрану отрасли, браузеру или фрагменту фоновой задачи.</string>
 
     <string name="data_title">Информационная безопасность в IT</string>
     <string name="data_intro">Информационная безопасность в IT защищает инфраструктуру, сервисы и данные от атак, утечек и отказов. Эта отрасль объединяет технические, организационные и правовые меры для устойчивой работы цифровых продуктов.</string>
@@ -30,4 +31,8 @@
     <string name="web_error_invalid_url">Введите корректный адрес сайта</string>
     <string name="web_error_loading">Не удалось открыть страницу</string>
     <string name="web_back">Назад</string>
+
+    <string name="worker_title">WorkManager</string>
+    <string name="worker_button_start">Запустить фоновую задачу</string>
+    <string name="worker_task_enqueued">Фоновая задача поставлена в очередь</string>
 </resources>

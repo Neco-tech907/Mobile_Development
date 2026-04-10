@@ -14,6 +14,10 @@
             android:id="@+id/nav_web"
             android:icon="@android:drawable/ic_menu_search"
             android:title="@string/nav_web" />
+        <item
+            android:id="@+id/nav_worker"
+            android:icon="@android:drawable/ic_popup_sync"
+            android:title="@string/nav_worker" />
     </group>
 
 </menu>

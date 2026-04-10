@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
                 R.id.nav_data,
-                R.id.nav_web
+                R.id.nav_web,
+                R.id.nav_worker
         ).setOpenableLayout(drawerLayout).build();
 
         NavigationUI.setupWithNavController(binding.navView, navController);
