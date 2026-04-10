@@ -95,11 +95,8 @@
 - возврат результата в UI-поток.
 
 **Демонстрация работы:**
-> *Рисунок 3 — Передача данных в Looper*
-<img width="354" height="786" alt="Screenshot_7" src="https://github.com/user-attachments/assets/2340aa67-a814-4723-b820-8a50af269b8e" />
-
-> *Рисунок 4 — Результат обработки сообщений*
-<img width="354" height="786" alt="Screenshot_8" src="https://github.com/user-attachments/assets/6937d300-8a61-4c55-90db-bd030d563b36" />
+> *Рисунок 3 — Работа модуля Looper*
+<img width="354" height="788" alt="Screenshot_9" src="https://github.com/user-attachments/assets/e85aa4f9-10a2-46ac-b5e3-64752ff36fee" />
 
 ---
 
@@ -122,7 +119,8 @@
 
 **Демонстрация работы:**
 > *Рисунок 5 — Работа модуля cryptoloader*
-<img width="354" height="788" alt="Screenshot_9" src="https://github.com/user-attachments/assets/e85aa4f9-10a2-46ac-b5e3-64752ff36fee" />
+<img width="354" height="786" alt="Screenshot_7" src="https://github.com/user-attachments/assets/2340aa67-a814-4723-b820-8a50af269b8e" />
+<img width="354" height="786" alt="Screenshot_8" src="https://github.com/user-attachments/assets/6937d300-8a61-4c55-90db-bd030d563b36" />
 
 ---
 
