@@ -4,30 +4,28 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import java.util.concurrent.TimeUnit;
 
-public class Worker extends androidx.work.Worker {
-    private static final String TAG = "MireaProjectWorker";
+public class MyWorker extends Worker {
 
-    public Worker(@NonNull Context context, @NonNull WorkerParameters params) {
+    public MyWorker(@NonNull Context context, @NonNull WorkerParameters params) {
         super(context, params);
     }
 
     @NonNull
     @Override
     public Result doWork() {
-        Log.d(TAG, "Фоновая задача началась");
+        Log.d("MireaProjectWorker", "Фоновая задача началась...");
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            Log.e(TAG, "Фоновая задача прервана", e);
             return Result.failure();
         }
-
-        Log.d(TAG, "Фоновая задача успешно завершена");
+        Log.d("MireaProjectWorker", "Фоновая задача успешно завершена!");
         return Result.success();
     }
 }
