@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Camera</string>
+    <string name="camera_image_description">Снимок с камеры</string>
+</resources>
