@@ -51,6 +51,8 @@
 ## Демонстрация работы
 
 > Рисунок 1 - Получение времени в модуле `timeservice`
+<img width="306" height="425" alt="Screenshot_38" src="https://github.com/user-attachments/assets/5debff90-c2bc-47bb-8473-90e15110bbfb" />
+
 
 ---
 
@@ -79,9 +81,8 @@
 
 ## Демонстрация работы
 
-> Рисунок 2 - Получение внешнего IP-адреса и геоданных
-
-> Рисунок 3 - Получение текущей погоды по координатам
+> Рисунок 2 - Получение внешнего IP-адреса и геоданных, текущей погоды по координатам
+<img width="343" height="760" alt="Screenshot_39" src="https://github.com/user-attachments/assets/22736ca3-4164-4b4f-ba45-4583c5affcc2" />
 
 ---
 
@@ -111,10 +112,16 @@
 ## Демонстрация работы
 
 > Рисунок 4 - Экран регистрации и входа пользователя
+<img width="346" height="757" alt="Screenshot_40" src="https://github.com/user-attachments/assets/2b2abdd4-aeaa-48ba-a8ff-fb988eae6c12" />
+
 
 > Рисунок 5 - Успешная авторизация и отображение UID пользователя
+<img width="339" height="758" alt="Screenshot_42" src="https://github.com/user-attachments/assets/f34262fc-ded0-4044-8b16-55c7cef5b519" />
+
 
 > Рисунок 6 - Подтверждение email через письмо Firebase
+<img width="822" height="551" alt="Screenshot_41" src="https://github.com/user-attachments/assets/3116dc3a-125a-4a83-a679-f5e7ab43c828" />
+
 
 ---
 
