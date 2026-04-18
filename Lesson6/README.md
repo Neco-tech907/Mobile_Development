@@ -123,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 Демонстрация работы  
-Рисунок 1 – Данные сохранены и загружены из SharedPreferences после повторного запуска alt text
+Рисунок 1 – Данные сохранены и загружены из SharedPreferences после повторного запуска
+<img width="341" height="760" alt="Screenshot_32" src="https://github.com/user-attachments/assets/b78ce71d-f326-499d-94b0-af6cb98eee92" />
+<img width="340" height="764" alt="Screenshot_33" src="https://github.com/user-attachments/assets/a8a5dbb3-b2c8-4e74-b8d3-0afdecc080d5" />
+
 
 ### 3.2. Модуль `securesharedpreferences`
 
@@ -196,7 +199,9 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 Демонстрация работы  
-Рисунок 2 – Главный экран модуля SecureSharedPreferences с расшифрованным именем поэта alt text
+Рисунок 2 – Главный экран модуля SecureSharedPreferences с расшифрованным именем поэта 
+<img width="338" height="759" alt="Screenshot_34" src="https://github.com/user-attachments/assets/6777e20c-2518-4eb6-89ec-bb8c554a0c30" />
+
 
 ### 3.3. Модуль `internalfilestorage`
 
@@ -288,7 +293,9 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 Демонстрация работы  
-Рисунок 3 – Содержимое файла, прочитанное из внутреннего хранилища alt text
+Рисунок 3 – Содержимое файла, прочитанное из внутреннего хранилища
+<img width="338" height="759" alt="Screenshot_34" src="https://github.com/user-attachments/assets/f7c0f788-204f-4610-bf48-c07821db013b" />
+
 
 ### 3.4. Модуль `notebook`
 
@@ -469,13 +476,13 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 Демонстрация работы  
-Рисунок 4 – Цитата сохранена в папку Documents внешнего хранилища alt text
+Рисунок 4 – Цитата сохранена в папку Documents внешнего хранилища
+<img width="341" height="749" alt="Screenshot_36" src="https://github.com/user-attachments/assets/7d39feaa-a2cf-42b6-b9a5-482ec802ac4c" />
+
 
 ### 3.5. Модуль `employeedb`
 
 Последний модуль посвящён работе с базой данных `Room`. В качестве сущности используется класс `Hero`, а доступ к таблице организован через `HeroDao`.
-
-После обновления демонстрационные записи заменены: теперь база заполняется героями `Супермен`, `Тор` и `Доктор Стрэндж`. Идентификаторы задаются вручную как `10`, `11` и `12`, чтобы вывод совпадал с требуемым форматом отчёта и интерфейса.
 
 #### `MainActivity.java`
 
@@ -647,9 +654,13 @@ public interface HeroDao {
 ```
 
 Демонстрация работы  
-Рисунок 5 – Данные трёх супергероев после заполнения базы данных alt text
+Рисунок 5 – Данные трёх супергероев после заполнения базы данных
+<img width="396" height="865" alt="Screenshot_49" src="https://github.com/user-attachments/assets/8297d8bb-cbde-4ccc-82b7-84277c39a059" />
 
-Рисунок 6 – Очистка базы данных alt text
+
+Рисунок 6 – Очистка базы данных 
+<img width="396" height="875" alt="Screenshot_50" src="https://github.com/user-attachments/assets/36adf1eb-721c-4b17-bd53-d92436926e81" />
+
 
 ## 4. Результат
 
@@ -661,9 +672,3 @@ public interface HeroDao {
 - работу с текстовыми файлами во внешнем каталоге `Documents`;
 - хранение структурированных записей в `Room`.
 
-Отчёт приведён в соответствие с текущим состоянием проекта. Все листинги в этом `README.md` обновлены и отражают актуальные тексты, имена файлов и демонстрационные данные:
-
-- `Борис Пастернак` в `securesharedpreferences`;
-- исторический текст про `12 июня 1990 года` в `internalfilestorage`;
-- `quote_chekhov.txt` и цитата Чехова в `notebook`;
-- герои `Супермен`, `Тор` и `Доктор Стрэндж` в `employeedb`.
